@@ -4,16 +4,22 @@ import './App.css'
 import PropsAndState from './components/PropsAndState'
 import ContextApi from './components/ContextApi'
 import ReduxToolkit from './components/ReduxToolkit'
+import QuickStartReactQuery from './components/QuickStartReactQuery'
 import { Provider } from 'react-redux'
 import { store } from './store'
+import { QueryClient, QueryClientProvider } from 'react-query'
+import { ReactQueryDevtools } from 'react-query/devtools'
 
 enum ESlide {
   PropsAndState = 4,
   ContextApi = 5,
-  ReduxToolkit = 7
+  ReduxToolkit = 7,
+  BasicReactQuery = 13,
 }
 
 function App() {
+  const queryClient = new QueryClient()
+
   const SlideToComponent: Record<ESlide, () => JSX.Element> = {
     [ESlide.PropsAndState]: () => <PropsAndState />,
     [ESlide.ContextApi]: () => <ContextApi />,
@@ -21,6 +27,12 @@ function App() {
       <Provider store={store}>
         <ReduxToolkit />
       </Provider>
+    ),
+    [ESlide.BasicReactQuery]: () => (
+      <QueryClientProvider client={queryClient}>
+        <ReactQueryDevtools />
+        <QuickStartReactQuery />
+      </QueryClientProvider>
     )
   }
 
@@ -28,6 +40,7 @@ function App() {
     [ESlide.PropsAndState]: 'Props and State',
     [ESlide.ContextApi]: 'Context API',
     [ESlide.ReduxToolkit]: 'Redux Toolkit',
+    [ESlide.BasicReactQuery]: 'BasicReactQuery',
   }
 
   const [currentSlide, setCurrentSlide] = useState<ESlide>(ESlide.PropsAndState)
