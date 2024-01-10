@@ -5,6 +5,7 @@ import {
 } from 'react-query'
 import { fetchTodos, addTodo, ITodo } from '../api'
 import Spinner from './Spinner'
+import { useState } from 'react'
 
 const Todos = () => {
   const queryClient = useQueryClient()
@@ -54,4 +55,21 @@ const Todos = () => {
   )
 }
 
-export default Todos
+const QuickStartReactQuery = () => {
+  const [isTodosShown, setIsTodosShown] = useState(true)
+
+  return (
+    <div>
+      {isTodosShown && <Todos />}
+
+      <button
+        style={{ width: '100%', marginTop: 32 }}
+        onClick={() => setIsTodosShown(!isTodosShown)}
+      >
+        {isTodosShown ? 'Hide' : 'Show'} Todos
+      </button>
+    </div>
+  )
+}
+
+export default QuickStartReactQuery
