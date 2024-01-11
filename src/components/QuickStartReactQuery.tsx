@@ -18,7 +18,7 @@ const Todos = () => {
     },
   })
 
-  if (query.isLoading || query.isFetching || mutation.isLoading) {
+  if (query.isLoading || mutation.isLoading) {
     return <Spinner />
   }
 
@@ -40,6 +40,7 @@ const Todos = () => {
           </li>
         ))}
       </ul>
+      {query.isFetching && <p>Data is updating...</p>}
 
       <button
         onClick={() => {

@@ -9,10 +9,10 @@ export const fetchTodos = async () => {
   })
 
   if (response.ok) {
-    return await response.json()
+    return response.json()
   }
 
-  return {}
+  throw new Error('Something bad happen')
 }
 
 export const addTodo = async (todo: ITodo) => {
@@ -22,9 +22,9 @@ export const addTodo = async (todo: ITodo) => {
   })
 
   if (response.ok) {
-    return await response.json()
+    return response.json()
   }
 
-  return {}
+  throw new Error('Something bad happen')
 }
 

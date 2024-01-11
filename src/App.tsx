@@ -18,7 +18,13 @@ enum ESlide {
 }
 
 function App() {
-  const queryClient = new QueryClient()
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: {
+        refetchOnWindowFocus: false,
+      }
+    }
+  })
 
   const SlideToComponent: Record<ESlide, () => JSX.Element> = {
     [ESlide.PropsAndState]: () => <PropsAndState />,
