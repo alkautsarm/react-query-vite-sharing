@@ -22,8 +22,8 @@ function App() {
     defaultOptions: {
       queries: {
         refetchOnWindowFocus: false,
-        // staleTime: 1000 * 10, Uncomment to test fresh data therefore no refetch
-        // cacheTime: 1000 * 10, Uncomment to test cache time when component unmounted
+        // staleTime: 1000 * 10, // Uncomment to test fresh data therefore no refetch
+        // cacheTime: 1000 * 10, // Uncomment to test cache time when component unmounted
       }
     }
   })
